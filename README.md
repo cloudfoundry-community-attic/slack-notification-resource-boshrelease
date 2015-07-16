@@ -1,6 +1,10 @@
 BOSH Release for slack-notification-resource
 ============================================
 
+Send messages to your [Slack](https://slack.com) channels from Concourse:
+
+![example](http://cl.ly/image/1k44412g3i3E/slack_notification.png)
+
 This BOSH release packages @Nopik's [slack-notification-resource](https://github.com/Nopik/slack-notification-resource) for Concourse, to make it simple to include the additional Concourse resource in your BOSH deployed Concourse system.
 
 Final releases are automatically created based on any changes to the upstream slack-notification-resource
