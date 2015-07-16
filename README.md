@@ -114,6 +114,7 @@ jobs:
       text: Hi everybody!
       channel: "#general"
       username: concourse
+      icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
 
 resources:
 - name: alert
@@ -121,6 +122,10 @@ resources:
   source:
     url: https://hooks.slack.com/services/XXXX/XXX/XXXX
 ```
+
+This will display the message with an icon for the avatar:
+
+![example](http://cl.ly/image/1k44412g3i3E/slack_notification.png)
 
 Setup pipeline in Concourse
 ---------------------------
