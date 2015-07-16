@@ -94,6 +94,34 @@ The former lines should be obtained from the Concourse BOSH release, not the doc
 
 And `bosh deploy` your Concourse manifest.
 
+Usage
+-----
+
+First, register a new webhook and select a default channel to send messages https://starkandwayne.slack.com/services/new/incoming-webhook
+
+Slack will give you a URL like `https://hooks.slack.com/services/XXXX/XXX/XXXX`.
+
+An example mini-pipeline that would send an alert:
+
+```yaml
+---
+jobs:
+- name: alert
+  public: true
+  plan:
+  - put: alert
+    params:
+      text: Hi everybody!
+      channel: "#general"
+      username: concourse
+
+resources:
+- name: alert
+  type: slack-notification
+  source:
+    url: https://hooks.slack.com/services/XXXX/XXX/XXXX
+```
+
 Setup pipeline in Concourse
 ---------------------------
 
