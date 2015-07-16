@@ -15,6 +15,19 @@ if [[ ! -f ${rootfs_tar} ]]; then
   exit 1
 fi
 
+if [[ "${access_key_id}X" == "X" || "${secret_access_key}" == "X" ]]; then
+  echo "USAGE embed_image_blob.sh path/to/image/resource blob-name"
+  echo "MISSING \$access_key_id and/or \$secret_access_key"
+fi
+
+cat > config/private.yml < EOS
+---
+blobstore:
+  s3:
+    access_key_id: ${access_key_id}
+    secret_access_key: ${secret_access_key}
+EOS
+
 set -ex
 
 mkdir -p blobs/${blob_name}
