@@ -35,4 +35,4 @@ mkdir -p blobs/${blob_name}
 cp ${rootfs_tar} blobs/${blob_name}/rootfs.tar
 
 bosh -n upload blobs
-git commit -a "added new ${blob_name} rootfs"
+git commit -a -m "added new ${blob_name} rootfs"
