@@ -1,0 +1,5 @@
+#!/bin/bash
+
+set -e -x
+
+tar xf slack-notification-resource/rootfs.tar -C ${BOSH_INSTALL_TARGET}

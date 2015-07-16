@@ -1,0 +1,5 @@
+---
+name: slack-notification-resource
+dependencies: []
+files:
+- slack-notification-resource/rootfs.tar

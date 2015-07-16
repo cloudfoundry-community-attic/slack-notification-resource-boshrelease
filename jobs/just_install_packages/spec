@@ -1,6 +1,6 @@
 ---
 name: just_install_packages
-packages: []
+packages: [slack-notification-resource]
 templates:
   ignoreme: ignoreme
 properties: {}
