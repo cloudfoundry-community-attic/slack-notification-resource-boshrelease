@@ -1,15 +1,44 @@
 ---
 jobs:
+- name: resource
+  public: true
+  plan:
+  - aggregate:
+    - get: slack-notification-resource
+      trigger: true
+    - get: boshrelease
+      trigger: false
+  - task: update-subtree
+    config:
+      platform: linux
+      image: {{docker-hub-task-image}}
+      inputs:
+      - {name: boshrelease}
+      - {name: slack-notification-resource}
+      run:
+        path: ./boshrelease/src/ci/scripts/update_subtree.sh
+        args: [slack-notification-resource]
+  - put: boshrelease
+    params:
+      build: boshrelease/src/slack-notification-resource
+
 - name: resource-image
   public: true
   plan:
   - get: boshrelease
+    passed: [resource]
     trigger: true
   - put: resource-image
     params:
       build: boshrelease/src/slack-notification-resource
 
 resources:
+- name: slack-notification-resource
+  type: git
+  source:
+    uri: https://github.com/Nopik/slack-notification-resource.git
+    branch: master
+
 - name: boshrelease
   type: git
   source:
