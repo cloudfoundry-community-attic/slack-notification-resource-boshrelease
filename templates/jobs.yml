@@ -11,8 +11,7 @@ update:
 jobs:
   - name: just_install_packages
     templates:
-    - name: just_install_packages
-      release: slack-notification-resource
+    - {name: just_install_packages, release: slack-notification-resource}
     instances: 1
     persistent_disk: 0
     resource_pool: small_z1
