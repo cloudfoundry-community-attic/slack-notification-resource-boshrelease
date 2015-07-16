@@ -11,7 +11,7 @@ jobs:
   - task: update-subtree
     config:
       platform: linux
-      image: {{docker-hub-task-image}}
+      image: docker:///ubuntu
       inputs:
       - {name: boshrelease}
       - {name: slack-notification-resource}
