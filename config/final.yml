@@ -3,3 +3,4 @@ blobstore:
   provider: s3
   options:
     bucket_name: slack-notification-resource-boshrelease
+final_name: slack-notification-resource
