@@ -1,1 +1,6 @@
---- {}
+---
+slack-notification-resource/rootfs.tar:
+  object_id: 57e3e3c3-06a7-4556-b1c1-e020ddf5df05
+  sha: !binary |-
+    ZjdkNjM3MzU5MGIwMDk5NTg4MjgxZmUyM2NhNmNkMTdhOGJiMzc1Yw==
+  size: 206021632
