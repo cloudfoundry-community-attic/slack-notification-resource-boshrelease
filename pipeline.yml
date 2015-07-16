@@ -1,5 +1,37 @@
 ---
 jobs:
+- name: embed
+  public: true
+  plan:
+  - aggregate:
+    - get: boshrelease
+      trigger: true
+    - get: resource-image
+      passed: [resource-image]
+      params:
+        rootfs: true
+      trigger: true
+  - task: embed-image-blob
+    config:
+      platform: linux
+      image: docker:///concourse/concourse-ci
+      inputs:
+      - {name: boshrelease}
+      - {name: resource-image}
+      run:
+        path: ./boshrelease/src/ci/scripts/embed_image_blob.sh
+        args: [resource-image, slack-notification-resource]
+
+- name: resource-image
+  public: true
+  plan:
+  - get: boshrelease
+    passed: [resource]
+    trigger: true
+  - put: resource-image
+    params:
+      build: boshrelease/src/slack-notification-resource
+
 - name: resource
   public: true
   plan:
@@ -23,16 +55,6 @@ jobs:
       repository: update-subtree/boshrelease
       rebase: true
 
-- name: resource-image
-  public: true
-  plan:
-  - get: boshrelease
-    passed: [resource]
-    trigger: true
-  - put: resource-image
-    params:
-      build: boshrelease/src/slack-notification-resource
-
 resources:
 - name: slack-notification-resource
   type: git
@@ -53,4 +75,4 @@ resources:
     email: {{docker-hub-email}}
     username: {{docker-hub-username}}
     password: {{docker-hub-password}}
-    repository: cfcommunity/slack-notification-resource-boshrelease
+    repository: cfcommunity/slack-notification-resource
