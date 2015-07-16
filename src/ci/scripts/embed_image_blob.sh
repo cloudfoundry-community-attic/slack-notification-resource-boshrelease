@@ -18,9 +18,10 @@ fi
 if [[ "${access_key_id}X" == "X" || "${secret_access_key}" == "X" ]]; then
   echo "USAGE embed_image_blob.sh path/to/image/resource blob-name"
   echo "MISSING \$access_key_id and/or \$secret_access_key"
+  exit 1
 fi
 
-cat > config/private.yml < EOS
+cat > config/private.yml << EOS
 ---
 blobstore:
   s3:
