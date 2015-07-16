@@ -8,19 +8,22 @@ jobs:
       trigger: true
     - get: resource-image
       passed: [resource-image]
-      params:
-        rootfs: true
+      params: {rootfs: true}
       trigger: true
   - task: embed-image-blob
     config:
       platform: linux
       image: docker:///concourse/concourse-ci
       inputs:
-      - {name: boshrelease}
+      - {name: boshrelease, path: .}
       - {name: resource-image}
       run:
-        path: ./boshrelease/src/ci/scripts/embed_image_blob.sh
+        path: ./src/ci/scripts/embed_image_blob.sh
         args: [resource-image, slack-notification-resource]
+  - put: boshrelease
+    params:
+      repository: embed-image-blob
+      rebase: true
 
 - name: resource-image
   public: true
