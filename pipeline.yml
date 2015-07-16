@@ -5,7 +5,7 @@ jobs:
   plan:
   - aggregate:
     - get: boshrelease
-      trigger: true
+      trigger: false
     - get: resource-image
       passed: [resource-image]
       params: {rootfs: true}
