@@ -20,7 +20,8 @@ jobs:
         args: [slack-notification-resource]
   - put: boshrelease
     params:
-      build: boshrelease/src/slack-notification-resource
+      repository: update-subtree/boshrelease
+      rebase: true
 
 - name: resource-image
   public: true
