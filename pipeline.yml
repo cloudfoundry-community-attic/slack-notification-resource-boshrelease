@@ -20,6 +20,9 @@ jobs:
       run:
         path: ./src/ci/scripts/embed_image_blob.sh
         args: [resource-image, slack-notification-resource]
+      params:
+        access_key_id: {{aws-access-key-id}}
+        secret_access_key: {{aws-secret-access-key}}
   - put: boshrelease
     params:
       repository: embed-image-blob
