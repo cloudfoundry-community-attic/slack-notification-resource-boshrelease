@@ -98,5 +98,5 @@ Setup pipeline in Concourse
 ---------------------------
 
 ```
-fly -t bosh-lite c -c pipeline.yml --vars-from credentials.yml slack-notification-resource-boshrelease
+fly -t snw c -c pipeline.yml --vars-from credentials.yml slack-notification-resource-boshrelease
 ```
