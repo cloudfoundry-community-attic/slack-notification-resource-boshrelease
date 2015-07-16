@@ -17,8 +17,7 @@ jobs:
       - {name: slack-notification-resource}
       run:
         path: ./boshrelease/src/ci/scripts/update_subtree.sh
-        args: []
-        # args: [slack-notification-resource]
+        args: [slack-notification-resource]
   - put: boshrelease
     params:
       build: boshrelease/src/slack-notification-resource
@@ -45,7 +44,6 @@ resources:
   source:
     uri: git@github.com:cloudfoundry-community/slack-notification-resource-boshrelease.git
     branch: master
-    paths: [src/slack-notification-resource/Dockerfile]
     private_key: {{github-private-key}}
 
 - name: resource-image

@@ -22,7 +22,7 @@ then
   git config --global user.email "concourse-bot@starkandwayne.com"
 fi
 
-pushd rdpg-boshrelease
+cd boshrelease
 git checkout master # see http://stackoverflow.com/a/18608538/36170
 git subtree pull \
   --prefix src/${subtree_repo} \
