@@ -1,80 +1,28 @@
 BOSH Release for slack-notification-resource
 ============================================
 
-Usage
------
+This BOSH release packages @Nopik's [slack-notification-resource](https://github.com/Nopik/slack-notification-resource) for Concourse, to make it simple to include the additional Concourse resource in your BOSH deployed Concourse system.
 
-To use this bosh release, first upload it to your bosh:
+Final releases are automatically created based on any changes to the upstream slack-notification-resource
 
-```
-bosh target BOSH_HOST
-git clone https://github.com/cloudfoundry-community/slack-notification-resource-boshrelease.git
-cd slack-notification-resource-boshrelease
-bosh upload release releases/slack-notification-resource-1.yml
-```
+See the build pipeline http://54.82.85.58:8080/pipelines/slack-notification-resource-boshrelease for status.
 
-For [bosh-lite](https://github.com/cloudfoundry/bosh-lite), you can quickly create a deployment manifest & deploy a cluster:
+Final releases are available on https://bosh.io/releases as well as this project's own [GitHub releases](https://github.com/cloudfoundry-community/slack-notification-resource-boshrelease/releases).
 
-```
-templates/make_manifest warden
-bosh -n deploy
-```
+Installation
+------------
 
-For AWS EC2, create a single VM:
+To use this bosh release, first upload it to the BOSH/bosh-lite that is running Concourse:
 
 ```
-templates/make_manifest aws-ec2
-bosh -n deploy
+bosh upload release https://bosh.io/d/github.com/cloudfoundry-community/slack-notification-resource-boshrelease
 ```
 
-### Override security groups
-
-For AWS & Openstack, the default deployment assumes there is a `default` security group. If you wish to use a different security group(s) then you can pass in additional configuration when running `make_manifest` above.
-
-Create a file `my-networking.yml`:
+Next, update your Concourse deployment manifest to add the resource:
 
 ```yaml
----
-networks:
-  - name: slack-notification-resource1
-    type: dynamic
-    cloud_properties:
-      security_groups:
-        - slack-notification-resource
+TODO
 ```
-
-Where `- slack-notification-resource` means you wish to use an existing security group called `slack-notification-resource`.
-
-You now suffix this file path to the `make_manifest` command:
-
-```
-templates/make_manifest openstack-nova my-networking.yml
-bosh -n deploy
-```
-
-### Development
-
-As a developer of this release, create new releases and upload them:
-
-```
-bosh create release --force && bosh -n upload release
-```
-
-### Final releases
-
-To share final releases:
-
-```
-bosh create release --final
-```
-
-By default the version number will be bumped to the next major number. You can specify alternate versions:
-
-```
-bosh create release --final --version 2.1
-```
-
-After the first release you need to contact [Dmitriy Kalinin](mailto://dkalinin@pivotal.io) to request your project is added to https://bosh.io/releases (as mentioned in README above).
 
 Setup pipeline in Concourse
 ---------------------------
