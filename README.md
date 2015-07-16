@@ -1,6 +1,8 @@
-# BOSH Release for slack-notification-resource
+BOSH Release for slack-notification-resource
+============================================
 
-## Usage
+Usage
+-----
 
 To use this bosh release, first upload it to your bosh:
 
@@ -31,7 +33,7 @@ For AWS & Openstack, the default deployment assumes there is a `default` securit
 
 Create a file `my-networking.yml`:
 
-``` yaml
+```yaml
 ---
 networks:
   - name: slack-notification-resource1
@@ -68,9 +70,15 @@ bosh create release --final
 
 By default the version number will be bumped to the next major number. You can specify alternate versions:
 
-
 ```
 bosh create release --final --version 2.1
 ```
 
 After the first release you need to contact [Dmitriy Kalinin](mailto://dkalinin@pivotal.io) to request your project is added to https://bosh.io/releases (as mentioned in README above).
+
+Setup pipeline in Concourse
+---------------------------
+
+```
+fly -t bosh-lite c -c pipeline.yml --vars-from credentials.yml slack-notification-resource-boshrelease
+```

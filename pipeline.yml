@@ -1,0 +1,26 @@
+---
+jobs:
+- name: build-resource-image
+  public: true
+  plan:
+  - get: boshrelease
+    trigger: true
+  - put: task-image
+    params:
+      build: combined/ci_image
+
+resources:
+- name: boshrelease
+  type: git
+  source:
+    uri: git@github.com:cloudfoundry-community/slack-notification-resource-boshrelease.git
+    branch: master
+    paths: [src/slack-notification-resource/Dockerfile]
+
+- name: task-image
+  type: docker-image
+  source:
+    email: {{docker-hub-email}}
+    username: {{docker-hub-username}}
+    password: {{docker-hub-password}}
+    repository: slack-notification-resource-boshrelease

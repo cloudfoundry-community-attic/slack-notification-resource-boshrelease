@@ -17,3 +17,5 @@ blobs/*
 #*
 tmp
 my*.yml
+
+credentials.yml
