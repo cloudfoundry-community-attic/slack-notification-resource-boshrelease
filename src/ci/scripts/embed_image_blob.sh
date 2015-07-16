@@ -21,6 +21,12 @@ if [[ "${access_key_id}X" == "X" || "${secret_access_key}" == "X" ]]; then
   exit 1
 fi
 
+if [[ -z "$(git config --global user.name)" ]]
+then
+  git config --global user.name "Concourse Bot"
+  git config --global user.email "concourse-bot@starkandwayne.com"
+fi
+
 cat > config/private.yml << EOS
 ---
 blobstore:
