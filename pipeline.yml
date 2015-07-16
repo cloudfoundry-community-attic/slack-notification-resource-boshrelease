@@ -11,13 +11,14 @@ jobs:
   - task: update-subtree
     config:
       platform: linux
-      image: docker:///ubuntu
+      image: docker:///concourse/concourse-ci
       inputs:
       - {name: boshrelease}
       - {name: slack-notification-resource}
       run:
         path: ./boshrelease/src/ci/scripts/update_subtree.sh
-        args: [slack-notification-resource]
+        args: []
+        # args: [slack-notification-resource]
   - put: boshrelease
     params:
       build: boshrelease/src/slack-notification-resource

@@ -1,12 +1,13 @@
 #!/bin/bash
 
-set -ex
-
 subtree_repo=$1; shift
 if [[ "${subtree_repo}X" == "X" ]]; then
   echo "USAGE: update_subtree.sh subtree_repo - to match to src/subtree_name in bosh release"
   exit 1
 fi
+
+set -ex
+
 
 pushd ${subtree_repo}
 commit_hash=$(git rev-parse HEAD)
