@@ -65,7 +65,7 @@ resources:
 - name: slack-notification-resource
   type: git
   source:
-    uri: https://github.com/Nopik/slack-notification-resource.git
+    uri: https://github.com/cloudfoundry-community/slack-notification-resource.git
     branch: master
 
 - name: boshrelease
