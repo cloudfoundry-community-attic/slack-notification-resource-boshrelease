@@ -1,0 +1,25 @@
+---
+jobs:
+- name: alert
+  public: true
+  plan:
+  - get: messages
+    trigger: false
+  - put: alert
+    params:
+      text_file: messages/slack-from-repo.out
+      channel: "#general"
+      username: concourse
+      icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
+
+resources:
+- name: alert
+  type: slack-notification
+  source:
+    url: https://hooks.slack.com/services/XXXX/XXX/XXXX
+
+- name: messages
+  type: git
+  source:
+    uri: https://gist.github.com/drnic/f70db33e4c060ad3233a
+    branch: master
