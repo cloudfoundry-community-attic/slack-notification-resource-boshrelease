@@ -1,0 +1,17 @@
+---
+jobs:
+- name: alert
+  public: true
+  plan:
+  - put: alert
+    params:
+      text: Hi everybody!
+      channel: "#general"
+      username: concourse
+      icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
+
+resources:
+- name: alert
+  type: slack-notification
+  source:
+    url: https://hooks.slack.com/services/XXXX/XXX/XXXX
