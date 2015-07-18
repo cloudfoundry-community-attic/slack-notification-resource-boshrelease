@@ -31,35 +31,11 @@ jobs:
 - name: resource-image
   public: true
   plan:
-  - get: boshrelease
-    passed: [resource]
+  - get: slack-notification-resource
     trigger: true
   - put: resource-image
     params:
-      build: boshrelease/src/slack-notification-resource
-
-- name: resource
-  public: true
-  plan:
-  - aggregate:
-    - get: slack-notification-resource
-      trigger: true
-    - get: boshrelease
-      trigger: false
-  - task: update-subtree
-    config:
-      platform: linux
-      image: docker:///concourse/concourse-ci
-      inputs:
-      - {name: boshrelease}
-      - {name: slack-notification-resource}
-      run:
-        path: ./boshrelease/src/ci/scripts/update_subtree.sh
-        args: [slack-notification-resource]
-  - put: boshrelease
-    params:
-      repository: update-subtree/boshrelease
-      rebase: true
+      build: slack-notification-resource
 
 resources:
 - name: slack-notification-resource
