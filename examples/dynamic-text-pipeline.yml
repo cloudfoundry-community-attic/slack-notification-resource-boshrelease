@@ -5,6 +5,15 @@ jobs:
   plan:
   - get: messages
     trigger: false
+  - task: show-message
+    config:
+      platform: linux
+      image: docker:///ubuntu
+      inputs:
+      - {name: messages}
+      run:
+        path: cat
+        args: [messages/slack-from-repo.out]
   - put: alert
     params:
       text_file: messages/slack-from-repo.out
