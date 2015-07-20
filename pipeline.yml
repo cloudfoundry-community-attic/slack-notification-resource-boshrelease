@@ -9,7 +9,7 @@ jobs:
     - get: resource-image
       passed: [resource-image]
       params: {rootfs: true}
-      trigger: true
+      trigger: false
   - task: embed-image-blob
     config:
       platform: linux
