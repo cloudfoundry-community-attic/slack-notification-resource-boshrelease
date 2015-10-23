@@ -9,7 +9,7 @@ This BOSH release packages @Nopik's [slack-notification-resource](https://github
 
 Final releases are automatically created based on any changes to the upstream slack-notification-resource
 
-See the build pipeline http://ci.starkandwayne.com:8080/pipelines/slack-notification-resource-boshrelease for status.
+See the build pipeline https://ci.starkandwayne.com/pipelines/slack-notification-resource-boshrelease for status.
 
 Final releases are available on https://bosh.io/releases as well as this project's own [GitHub releases](https://github.com/cloudfoundry-community/slack-notification-resource-boshrelease/releases).
 
