@@ -113,6 +113,13 @@ jobs:
 - name: alert
   public: true
   plan:
+  - task: say-hello
+    config:
+      platform: linux
+      image: "docker:///ubuntu"
+      run:
+        path: echo
+        args: ["Hello, world!"]
   - put: alert
     params:
       text: Hi everybody!
