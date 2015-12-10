@@ -46,7 +46,7 @@ jobs:
     - {release: slack-notification-resource, name: just_install_packages}
 ```
 
-The final change is to explicitly list all the resource types (they are implicit) and add the `slack-notification-resource` package to the list:
+The final change is to add the `slack-notification-resource` package to the list of `additional_resource_types`:
 
 ```yaml
 jobs:
@@ -54,47 +54,10 @@ jobs:
   ...
   properties:
     groundcrew:
-      resource_types:
-      - type: archive
-        image: /var/vcap/packages/archive_resource
-      - type: cf
-        image: /var/vcap/packages/cf_resource
-      - type: docker-image
-        image: /var/vcap/packages/docker_image_resource
-      - type: git
-        image: /var/vcap/packages/git_resource
-      - type: s3
-        image: /var/vcap/packages/s3_resource
-      - type: semver
-        image: /var/vcap/packages/semver_resource
-      - type: time
-        image: /var/vcap/packages/time_resource
-      - type: tracker
-        image: /var/vcap/packages/tracker_resource
-      - type: pool
-        image: /var/vcap/packages/pool_resource
-      - type: vagrant-cloud
-        image: /var/vcap/packages/vagrant_cloud_resource
-      - type: github-release
-        image: /var/vcap/packages/github_release_resource
-      - type: bosh-io-release
-        image: /var/vcap/packages/bosh_io_release_resource
-      - type: bosh-io-stemcell
-        image: /var/vcap/packages/bosh_io_stemcell_resource
-      - type: bosh-deployment
-        image: /var/vcap/packages/bosh_deployment_resource
+      additional_resource_types:
       - type: slack-notification
         image: /var/vcap/packages/slack-notification-resource
 ```
-
-Note that it is the latter two lines that are specific to this BOSH release:
-
-```yaml
-- type: slack-notification
-  image: /var/vcap/packages/slack-notification-resource
-```
-
-The former lines should be obtained from the Concourse BOSH release, not the documentation above which might be out of date. Use https://github.com/concourse/concourse/blob/master/jobs/groundcrew/spec#L69-L96
 
 And `bosh deploy` your Concourse manifest.
 
