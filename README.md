@@ -36,14 +36,14 @@ releases:
     version: latest
 ```
 
-Into the `worker` job, add the `{release: slack-notification-resource, name: just_install_packages}` job template that will install the package:
+Into the `worker` job, add the `{release: slack-notification-resource, name: slack-notification-resource}` job template that will install the package:
 
 ```yaml
 jobs:
 - name: worker
   templates:
     ...
-    - {release: slack-notification-resource, name: just_install_packages}
+    - {release: slack-notification-resource, name: slack-notification-resource}
 ```
 
 The final change is to add the `slack-notification-resource` package to the list of `additional_resource_types`:

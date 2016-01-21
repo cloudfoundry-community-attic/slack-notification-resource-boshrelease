@@ -9,9 +9,9 @@ update:
   serial: false
 
 jobs:
-  - name: just_install_packages
+  - name: slack-notification-resource
     templates:
-    - {name: just_install_packages, release: slack-notification-resource}
+    - {name: slack-notification-resource, release: slack-notification-resource}
     instances: 1
     persistent_disk: 0
     resource_pool: small_z1
