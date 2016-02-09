@@ -1,0 +1,20 @@
+---
+packages:
+- name: slack-notification-resource
+  version: 0c0d1ca829024864f2af91d481bdcde1972c1066
+  fingerprint: 0c0d1ca829024864f2af91d481bdcde1972c1066
+  sha1: 82bd6f77ab85b4d47b3159ae4df27bad2f537ee6
+  dependencies: []
+jobs:
+- name: slack-notification-resource
+  version: 2d335e8843c35961ae3c850d6ad576b1ad7bdf80
+  fingerprint: 2d335e8843c35961ae3c850d6ad576b1ad7bdf80
+  sha1: 2257aa3091a4b5440c0decf79fd9c90ab00ba8bd
+license:
+  version: 8da6eb3df1dce64b78610e7cbaf4245d66e88f1c
+  fingerprint: 8da6eb3df1dce64b78610e7cbaf4245d66e88f1c
+  sha1: bce243b08526c87b20e2d77a11e1b10922860a9f
+commit_hash: 015c5c2e
+uncommitted_changes: true
+name: slack-notification-resource
+version: '8'
