@@ -3,6 +3,8 @@
 image_resource=$1; shift
 blob_name=$1; shift
 
+pushd boshrelease
+
 if [[ "${blob_name}X" == "X" ]]; then
   echo "USAGE embed_image_blob.sh path/to/image/resource blob-name"
   exit 1
