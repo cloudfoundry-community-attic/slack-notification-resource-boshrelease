@@ -47,7 +47,7 @@ resources:
 - name: boshrelease
   type: git
   source:
-    uri: git@github.com:cloudfoundry-community/slack-notification-resource-boshrelease.git
+    uri: git@github.com:starkandwayne/slack-notification-resource-boshrelease.git
     branch: master
     private_key: {{github-private-key}}
 
