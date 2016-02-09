@@ -3,7 +3,6 @@
 image_resource=$1; shift
 blob_name=$1; shift
 
-pushd boshrelease
 
 if [[ "${blob_name}X" == "X" ]]; then
   echo "USAGE embed_image_blob.sh path/to/image/resource blob-name"
@@ -28,6 +27,7 @@ then
   git config --global user.name "Concourse Bot"
   git config --global user.email "concourse-bot@starkandwayne.com"
 fi
+pushd boshrelease
 
 cat > config/private.yml << EOS
 ---
@@ -40,7 +40,7 @@ EOS
 set -ex
 
 mkdir -p blobs/${blob_name}
-cp ${rootfs_tar} blobs/${blob_name}/rootfs.tar
+cp ../${rootfs_tar} blobs/${blob_name}/rootfs.tar
 
 bosh -n upload blobs
 git commit -a -m "added new ${blob_name} rootfs"
